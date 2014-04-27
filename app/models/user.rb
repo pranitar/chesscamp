@@ -10,15 +10,17 @@ class User < ActiveRecord::Base
   # validations
   validates :username, presence: true, uniqueness: { case_sensitive: false}
   validates :role, inclusion: { in: %w[admin instructor], message: "is not a recognized role in system" }
-  validate :instructor_is_active_in_the_system, on: :create
   validates_presence_of :password, on: :create 
   validates_presence_of :password_confirmation, on: :create 
   validates_confirmation_of :password, message: "does not match"
   validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
 
+  # for use in authorizing with CanCan
+  ROLES = [['Administrator', :admin],['Instructor', :instructor]]
 
-  private
-  def instructor_is_active_in_the_system
-    is_active_in_system(:instructor)
+  def role?(authorized_role)
+    return false if role.nil?
+    role.downcase.to_sym == authorized_role
   end
+
 end
