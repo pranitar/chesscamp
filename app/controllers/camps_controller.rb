@@ -1,5 +1,6 @@
 class CampsController < ApplicationController
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
+  before_action :check_login, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   def index
     @upcoming_camps = Camp.upcoming.active.chronological.paginate(:page => params[:page]).per_page(10)

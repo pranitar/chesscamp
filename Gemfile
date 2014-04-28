@@ -21,6 +21,8 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem "nested_form"
+
 # Turbolinks isn't playing nicely with foundation so for now remove it from standard rails
 # gem 'turbolinks'
 
@@ -52,6 +54,8 @@ gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.1.5'
+
+gem 'cancancan'
 
 # Additional gems that are very useful in Rails development
 group :development do

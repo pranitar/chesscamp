@@ -19,6 +19,8 @@ class Instructor < ActiveRecord::Base
   scope :needs_bio, -> { where('bio IS NULL') }
   # scope :needs_bio, -> { where(bio: nil) }  # this also works...
 
+  accepts_nested_attributes_for :user, reject_if: lambda { |user| user[:username].blank? }, allow_destroy: true
+
   # class methods
   def self.for_camp(camp)
     # the 'instructive way'... (which I told you if you asked me for help)
