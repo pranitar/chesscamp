@@ -323,10 +323,10 @@ namespace :db do
         nimzo_student = FactoryGirl.create(:student, family: this_family, first_name: first_name, last_name: last_name, date_of_birth: dob, rating: rating)
         payment = ["full", "deposit"].sample
         FactoryGirl.create(:registration, camp: camp, student: nimzo_student, payment_status: payment)
-        if rand(2).zero?
-          endgame_camp = Camp.where(curriculum_id: endgames.id).openings.sample
-          FactoryGirl.create(:registration, camp: endgame_camp, student: nimzo_student, payment_status: payment)
-        end
+        # if rand(2).zero?
+        #   endgame_camp = Camp.where(curriculum_id: endgames.id).openings.sample
+        #   FactoryGirl.create(:registration, camp: endgame_camp, student: nimzo_student, payment_status: payment)
+        # end
       end
     end
 

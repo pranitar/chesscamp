@@ -92,5 +92,9 @@ class RegistrationTest < ActiveSupport::TestCase
       assert_equal %w[Kelsey Zach], Registration.deposit_only.map{|r| r.student.first_name}.sort
     end
 
+    should "have a working by_student scope" do
+      assert_equal ["Regan, Kelsey", "Regan, Peter", "Regan, Peter", "Skirpan, Max", "Skirpan, Zach"], Registration.by_student.map{|r| r.student.name}
+    end
+
   end
 end
