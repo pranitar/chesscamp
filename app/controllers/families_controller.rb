@@ -8,7 +8,8 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    # @camps = @family.camps.chronological.to_a
+    @active_students = @family.students.active.alphabetical.to_a
+    @inactive_students = @family.students.inactive.alphabetical.to_a
   end
 
   def new
