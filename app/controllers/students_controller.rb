@@ -12,32 +12,37 @@ class StudentsController < ApplicationController
   end
 
   def new
+    authorize! :new, @student
     @student = Student.new
   end
 
   def edit
+    authorize! :update, @student
   end
 
   def create
+    authorize! :new, @student
     @student = Student.new(student_params)
     if @student.save
-      redirect_to @student, notice: "#{@student.first_name} was added to the system."
+      redirect_to @student, notice: "#{@student.first_name} #{@student.last_name} was added to the system."
     else
       render action: 'new'
     end
   end
 
   def update
+    authorize! :update, @student
     if @student.update(student_params)
-      redirect_to @student, notice: "#{@student.first_name} was revised in the system."
+      redirect_to @student, notice: "#{@student.first_name} #{@student.last_name} was revised in the system."
     else
       render action: 'edit'
     end
   end
 
   def destroy
+    authorize! :destroy, @student
     @student.destroy
-    redirect_to students_url, notice: "#{@student.first_name} was removed from the system."
+    redirect_to students_url, notice: "#{@student.first_name} #{@student.last_name} was removed from the system."
   end
 
   private

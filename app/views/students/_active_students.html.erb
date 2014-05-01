@@ -3,7 +3,8 @@
 <table class="table">
   <tr>
     <th width="200">Name</th>
-    <th width="200">Date of Birth</th>
+    <th width="200">Age</th>
+    <!-- <th width="200">Date of Birth</th> -->
     <th width="200">Rating</th>
     <th width="100">Camp Registrations</th>
     <th></th>
@@ -13,8 +14,9 @@
 <% @active_students.each do |student| %>
   <tr>
     <td><%= link_to student.name, student_path(student) %></td>
-    <td align="center"><%= student.date_of_birth %></td>
-    <td align="center"><%= student.rating %></td>
+    <td align="center"><%= student.age %></td>
+    <!-- <td align="center"><%= student.date_of_birth %></td> -->
+    <td align="center"><%= student.rating==0 ? "Unrated" : student.rating %></td>
     <td align="center"><%= student.registrations.size %></td>
     <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
   </tr>

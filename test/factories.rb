@@ -47,10 +47,10 @@ FactoryGirl.define do
   factory :student do
     first_name "Ted"
     last_name "Gruberman"
-    association :family
     # rating 100
     date_of_birth 10.years.ago.to_date
     active true
+    association :family
   end
 
   factory :family do

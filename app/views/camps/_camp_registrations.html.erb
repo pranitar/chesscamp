@@ -1,0 +1,10 @@
+<strong>Name:&nbsp;&nbsp;</strong> 
+  <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
+
+<strong>Rating:&nbsp;&nbsp;</strong> 
+  <%= @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %><br /><br />
+
+<strong>Registrations</strong><%= @camp.registrations.size %>&nbsp;&nbsp; 
+  <%# @registrations.each do |registration| %>
+    <!-- <li><%#= link_to registration.students.name, registration_path(registration) %></li> -->
+  <%# end %>

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Sorry, you are not authorized to make that change."
+    flash[:error] = "You are not authorized to take this action."
     redirect_to home_path
   end
   
@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
   		helper_method :logged_in?
 
   		def check_login
-   			redirect_to login_url, alert: "You need to log in to view this page." if current_user.nil?
+   			redirect_to login_url, alert: "You need to log in to view this page" if current_user.nil?
   		end
 end

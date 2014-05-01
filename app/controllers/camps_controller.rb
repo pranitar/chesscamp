@@ -1,6 +1,6 @@
 class CampsController < ApplicationController
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  # before_action :check_login, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   def index
     @upcoming_camps = Camp.upcoming.active.chronological.paginate(:page => params[:page]).per_page(10)
@@ -10,16 +10,20 @@ class CampsController < ApplicationController
 
   def show
     @instructors = @camp.instructors.alphabetical.to_a
+    @registrations = @camp.registrations.by_student.to_a
   end
 
   def new
+    authorize! :new, @camp
     @camp = Camp.new
   end
 
   def edit
+    authorize! :update, @camp
   end
 
   def create
+    authorize! :new, @camp
     @camp = Camp.new(camp_params)
     if @camp.save
       redirect_to @camp, notice: "The camp #{@camp.name} (on #{@camp.start_date.strftime('%m/%d/%y')}) was added to the system."
@@ -29,6 +33,7 @@ class CampsController < ApplicationController
   end
 
   def update
+    authorize! :update, @camp
     if @camp.update(camp_params)
       redirect_to @camp, notice: "The camp #{@camp.name} (on #{@camp.start_date.strftime('%m/%d/%y')}) was revised in the system."
     else
@@ -37,6 +42,7 @@ class CampsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @camp
     @camp.destroy
     redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was removed from the system."
   end
@@ -47,6 +53,6 @@ class CampsController < ApplicationController
     end
 
     def camp_params
-      params.require(:camp).permit(:curriculum_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active, :instructor_ids => [])
+      params.require(:camp).permit(:curriculum_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active, :location_id, :instructor_ids => [])
     end
 end

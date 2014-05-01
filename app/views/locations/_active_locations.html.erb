@@ -3,9 +3,9 @@
 <table class="table">
   <tr>
     <th width="200">Name</th>
-    <th width="200">Street</th>
-    <th width="100">City, State, and Zip</th>
-    <th width="200">Max. Capacity</th>
+    <th width="200">Address</th>
+<!--     <th width="100">City, State, and Zip</th> -->
+    <th width="200">Capacity</th>
     <th></th>
   </tr>
 
@@ -13,7 +13,7 @@
   <tr>
     <td><%= link_to location.name, location_path(location) %></td>
     <td align="center"><%= location.street_1 %></td>
-    <td align="center"><%= location.city %>, <%= location.state %>, <%= location.zip %></td>
+<!--     <td align="center"><%= location.city %>, <%= location.state %>, <%= location.zip %></td> -->
     <td align="center"><%= location.max_capacity %></td>
     <td><%= link_to 'Edit', edit_location_path(location), class: "button tiny radius" %></td>
   </tr>

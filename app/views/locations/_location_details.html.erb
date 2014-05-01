@@ -5,8 +5,14 @@
 <strong>Street:&nbsp;&nbsp;</strong><br /> 
   <%= @location.street_1 %><br /><br />
 
-<strong>City, State, and Zip Code:&nbsp;&nbsp;</strong><br /> 
-  <%= @location.city %>, <%= @location.state %>, <%= @location.zip %><br /><br />
+<% if @location.street_2 %>
+  <%= @location.street_2 %><br /><br />
+<%end%>
+
+<strong>City, State, Zip:&nbsp;&nbsp;</strong><br /> 
+  <%= @location.city %>, <%= @location.state %> <%= @location.zip %><br /><br />
+
+<strong>Map:&nbsp;&nbsp;</strong><br /> 
 
 <!-- <strong>State:&nbsp;&nbsp;</strong><br /> 
   <%= @location.state %><br /><br />
