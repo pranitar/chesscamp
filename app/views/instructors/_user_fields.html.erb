@@ -1,5 +1,5 @@
 <%= f.input :username %>
 <%= f.input :password %>
 <%= f.input :password_confirmation %>
-<%= f.input :role %>
+<%= f.input :role, collection: User::ROLES, :prompt => "Select role..." %>
 <%= f.input :active %>
