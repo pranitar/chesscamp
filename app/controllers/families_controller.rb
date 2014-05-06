@@ -8,6 +8,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
+    authorize! :read, @family
     @active_students = @family.students.active.alphabetical.to_a
     @inactive_students = @family.students.inactive.alphabetical.to_a
   end

@@ -7,6 +7,8 @@ class StudentsController < ApplicationController
   end
 
   def show
+    authorize! :read, @student
+    @camps = @student.camps.chronological
     @upcoming_camps = @student.camps.upcoming.chronological
     @past_camps = @student.camps.past.chronological
   end

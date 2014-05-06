@@ -8,6 +8,7 @@ class RegistrationsController < ApplicationController
   end
 
   def show
+    authorize! :read, @registration
     @camps = @registration.camps.chronological.to_a
   end
 

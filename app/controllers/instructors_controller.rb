@@ -16,11 +16,14 @@ class InstructorsController < ApplicationController
   def new
     authorize! :new, @instructor
     @instructor = Instructor.new
-    @instructor.build_user
+    user = @instructor.build_user
   end
 
   def edit
     authorize! :update, @instructor
+    if(@instructor.user.nil?)
+      user = @instructor.build_user
+    end
     # reformating the phone so it has dashes when displayed for editing (personal taste)
     @instructor.phone = number_to_phone(@instructor.phone)
   end
@@ -29,7 +32,7 @@ class InstructorsController < ApplicationController
     authorize! :new, @instructor
     @instructor = Instructor.new(instructor_params)
     if @instructor.save
-      redirect_to @instructor, notice: "#{@instructor.proper_name} was added to the system."
+      redirect_to @instructor, notice: "#{@instructor.proper_name} was added to the system"
     else
       render action: 'new'
     end
@@ -38,7 +41,7 @@ class InstructorsController < ApplicationController
   def update
     authorize! :update, @instructor
     if @instructor.update(instructor_params)
-      redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system."
+      redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system"
     else
       render action: 'edit'
     end
@@ -47,7 +50,7 @@ class InstructorsController < ApplicationController
   def destroy
     authorize! :destroy, @instructor
     @instructor.destroy
-    redirect_to instructors_url, notice: "#{@instructor.proper_name} was removed from the system."
+    redirect_to instructors_url, notice: "#{@instructor.proper_name} was removed from the system"
   end
 
   private
@@ -56,6 +59,6 @@ class InstructorsController < ApplicationController
     end
 
     def instructor_params
-      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active, :user_attributes => [:username, :password, :password_confirmation, :role, :active])
+      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active, user_attributes: [:id, :username, :password, :password_confirmation, :role, :active])
     end
 end

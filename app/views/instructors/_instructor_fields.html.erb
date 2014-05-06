@@ -2,5 +2,6 @@
  <%= f.input :last_name %>
  <%= f.input :phone, as: :string %>
  <%= f.input :email %>
- <%= f.input :active %>
  <%= f.input :bio, input_html: { rows: 6 } %>
+ <%= f.input :active %>
+ <%#= f.input :camp_id, collection: Camp.active.alphabetical, prompt: "Select camp..." %>

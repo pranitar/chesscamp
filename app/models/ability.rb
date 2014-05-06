@@ -12,6 +12,39 @@ class Ability
         can :destroy, Instructor do |instructor|  
         instructor.id == user.instructor_id
         end
+        # they can read their own profile
+        can :show, User do |u|  
+        u.id == user.id
+        end
+        # they can update their own profile
+        can :update, User do |u|  
+        u.id == user.id
+        end
+        # # they can read their own camps' data
+        # can :read, Camp do |this_camp|  
+        # my_camps = user.instructor.camps.map(&:id)
+        # my_camps.include? this_camp.id 
+        # end  
+        # # they can update the camp only if they are the administrator
+        # can :update, Camp do |this_camp|
+        # managed_camps = user.instructor.camps.map{|p| p.id if p.user_id == "Administrator"}
+        # managed_camps.include? this_camp.id
+        # end      
+        # they can read information of students in their camps
+        can :read, Student do |this_student|  
+        camp_students = user.instructor.camps.map{|p| p.students.map(&:id)}.flatten
+        camp_students.include? this_student.id 
+        end
+        # they can update information of students in their camps
+        can :update, Student do |this_student|  
+        camp_students = user.instructor.camps.map{|p| p.students.map(&:id)}.flatten
+        camp_students.include? this_student.id 
+        end   
+        # they can create new students in their camps
+        can :create, Student do |this_student|  
+        camp_students = user.instructor.camps.map{|p| p.students.map(&:id)}.flatten
+        camp_students.include? this_student.id  
+        end
     # elsif user.role? :member
     #     can :update, Band do |band|  
     #     band.id == user.band_id

@@ -6,9 +6,10 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "A&M Chess Camps" %></title>
     <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag "//code.jquery.com/ui/1.10.4/themes/sunny/jquery-ui"%>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "jquery.ui.datepicker"%> 
+    <%= javascript_include_tag "jquery.ui.datepicker"%>
     <%= csrf_meta_tags %>
   </head>
 

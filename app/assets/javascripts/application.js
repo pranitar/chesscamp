@@ -15,6 +15,7 @@
 //= require jquery_nested_form
 //= require foundation
 //= require_tree .
+//= require jquery.ui.datepicker
 
 $(function(){ $(document).foundation(); });
 
@@ -25,12 +26,46 @@ $(function() {
    });
 });
 
-// Datepicker code
-// $(document).ready(function() {
-// 	$(function() {
-// 	  $(".datepicker").datepicker({
-// 	    format: 'mm/dd/YYYY'
-// 	  });
-// 	});
-// });
+$(function() {
+    $( "#datepicker" ).datepicker();
+});
+
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+
+//Datepicker code
+$(document).ready(function() {
+	$(function() {
+	  $(".datepicker").datepicker({
+	    format: 'mm/dd/YYYY'
+	  });
+	});
+});
 

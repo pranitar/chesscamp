@@ -1,10 +1,9 @@
-<strong>Name:&nbsp;&nbsp;</strong> 
-  <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
-
+<div class="panel clearfix">
 <strong>Rating:&nbsp;&nbsp;</strong> 
   <%= @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %><br /><br />
 
-<strong>Registrations</strong><%= @camp.registrations.size %>&nbsp;&nbsp; 
-  <%# @registrations.each do |registration| %>
-    <!-- <li><%#= link_to registration.students.name, registration_path(registration) %></li> -->
-  <%# end %>
+<strong>Registrations (<%= @camp.registrations.size%>)</strong>&nbsp;&nbsp;<br>
+  <% @registrations.each do |registration| %>
+    <%= link_to registration.student.name, student_path(registration.student) %> <%= registration.student.rating%><br>
+  <% end %>
+</div>

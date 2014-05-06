@@ -31,9 +31,7 @@
           <%= instructor_form.simple_fields_for :user do |user_form| %>
             <%= render :partial => "user_fields", :locals => { :f => user_form } %>
           <% end %> 
-          <p>
-            <br /><%#= instructor_form.link_to_add("Add User", :user, :class => 'button tiny') %>
-          </p>
+          <% instructor_form.link_to_add("Add User", :user) %>
         </div> 
       </div>
     </div>

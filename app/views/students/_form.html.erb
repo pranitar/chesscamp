@@ -5,8 +5,8 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.collection_select :family_id, Family.active, :id, :family_name, prompt: "Select family..." %>  
-    <%= f.input :rating %>
-    <%= f.input :date_of_birth, as: :string, order: [:month, :day, :year], include_blank: true, start_year: Date.today.year - 40, end_year: Date.today.year + 1 %>
+    <%= f.input :rating %> 
+    <%= f.input :date_of_birth, as: :string, order: [:month, :day, :year], include_blank: true, :input_html => {:class => "avg datepicker"} %>
     <%= f.input :active %>
 
     <div class="form-actions">
