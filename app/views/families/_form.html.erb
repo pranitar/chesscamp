@@ -1,41 +1,23 @@
-<%#= simple_form_for(@family, html: { class: 'form-horizontal' }) do |f| %>
-   
-   <!-- <h3><%#= controller.action_name.capitalize %> Instructor</h3> -->
-    
-    <%#= f.input :first_name %>
-    <%#= f.input :last_name %>
-    <%#= f.input :phone, as: :string %>
-    <%#= f.input :email %>
-    <%#= f.input :active %>
-    <%#= f.input :bio, input_html: { rows: 6 } %>
-
-    <!-- <div class="form-actions">
-      <%#= f.submit nil, class: 'button radius' %>
-      <%#= link_to 'Back to list of families', families_path, :class => 'button secondary radius' %>
-    </div> -->
-
-<%# end %>
-
 <%= simple_nested_form_for @family, :html => { :class => 'form-horizontal' } do |family_form| %>
     <div class="row">
-      <div class="span7">
+      <div class="span6">
         <fieldset>
           <legend><%= controller.action_name.capitalize %> Family</legend>
           <%= render :partial => "family_fields", :locals => { :f => family_form } %>
         </fieldset>
       </div>
+    </div>
 
-    <div class="span5">
+    <div class="span6">
       <legend>Student(s) enrolled under this family</legend> 
         <div id="family_users">
-          <%= family_form.simple_fields_for :user do |user_form| %>
-            <%= render :partial => "student_fields", :locals => { :f => user_form } %>
+          <%= family_form.simple_fields_for :students do |student_form| %>
+            <%= render :partial => "student_fields", :locals => { :f => student_form } %>
           <% end %> 
-          <!-- <p>
-            <br /><%#= family_form.link_to_add("Add User", :user, :class => 'button tiny') %>
-          </p> -->
+          <p>
+            <br /><%= family_form.link_to_add("Add Student", :students, :class => 'button tiny') %>
+          </p>
         </div> 
-      </div>
     </div>
     <div class="form-actions">
       <%= family_form.submit nil, :class => 'button radius' %>

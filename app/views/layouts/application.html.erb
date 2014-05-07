@@ -7,29 +7,22 @@
     <title><%= content_for?(:title) ? yield(:title) : "A&M Chess Camps" %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= stylesheet_link_tag "//code.jquery.com/ui/1.10.4/themes/sunny/jquery-ui"%>
+    <%= stylesheet_link_tag "/resources/demos/style.css" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "jquery.ui.datepicker"%>
+    <%= javascript_include_tag "//code.jquery.com/jquery-1.10.2.js"%>
+    <%= javascript_include_tag "//code.jquery.com/ui/1.10.4/jquery-ui.js"%>
+
+    <%= stylesheet_link_tag "../../themes/base/jquery.ui.all.css"%>
+    <%=javascript_include_tag "../../jquery-1.10.2.js"%>
+    <%=javascript_include_tag "../../ui/jquery.ui.core.js"%>
+    <%=javascript_include_tag "../../ui/jquery.ui.widget.js"%>
+    <%=stylesheet_link_tag "../demos.css"%>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <%= render :partial => "partials/nav" %>
-    
-    <div id="container">
-      <div id="login">
-        <% if logged_in? %>
-          <%= link_to 'Logout', logout_path %>
-          <br>[<%= current_user.username %>:<%= current_user.role %>]
-        <% else %>
-          <%= link_to 'Login', login_path %>
-        <% end %>
-      </div>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-    </div>
-    
+    <%= render :partial => "partials/nav" %>  
     <div class="row">
       <div class="small-12 columns" id="main_content">
         <%= render :partial => "partials/flash" %>

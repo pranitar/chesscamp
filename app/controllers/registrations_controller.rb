@@ -3,17 +3,13 @@ class RegistrationsController < ApplicationController
   # before_action :check_login, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   def index
-    @active_registrations = Registration.active.alphabetical.paginate(:page => params[:page]).per_page(10)
-    @inactive_registrations = Registration.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
 
   def show
-    authorize! :read, @registration
-    @camps = @registration.camps.chronological.to_a
   end
 
   def new
-    authorize! :new, @registration
+    # authorize! :new, @registration
     @registration = Registration.new
   end
 
@@ -25,7 +21,7 @@ class RegistrationsController < ApplicationController
     authorize! :new, @registration
     @registration = Registration.new(registration_params)
     if @registration.save
-      redirect_to @registration, notice: "#{@registration.name} was added to the system."
+      redirect_to @registration, notice: "This registration was added to the system."
     else
       render action: 'new'
     end
@@ -34,7 +30,7 @@ class RegistrationsController < ApplicationController
   def update
     authorize! :update, @registration
     if @registration.update(registration_params)
-      redirect_to @registration, notice: "#{@registration.name} was revised in the system."
+      redirect_to @registration, notice: "This registration was revised in the system."
     else
       render action: 'edit'
     end
@@ -43,7 +39,7 @@ class RegistrationsController < ApplicationController
   def destroy
     authorize! :destroy, @registration
     @registration.destroy
-    redirect_to registrations_url, notice: "#{@registration.name} was removed from the system."
+    redirect_to registrations_url, notice: "This registration was removed from the system."
   end
 
   private

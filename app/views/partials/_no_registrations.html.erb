@@ -1,0 +1,19 @@
+<table class="table">
+  <tr>
+    <th width="260">Name</th>
+    <th></th>
+  </tr>
+
+<% for camp in @upcoming_camps %>
+  <tr>
+    <% if camp.registrations.size == 0  %>
+      <td><%= link_to camp.name, camp_path(camp) %></td>
+      <td><%= link_to(image_tag('edit.jpg'), edit_camp_path(camp)) %></td>
+    <%end%>
+  </tr>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @upcoming_camps, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

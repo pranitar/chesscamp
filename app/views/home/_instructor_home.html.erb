@@ -1,0 +1,15 @@
+<h3>Welcome back, <%= current_user.username %>!</h3>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr valign="top">
+		<td>
+			<h3>Camps &nbsp;&nbsp;</h3>
+			<% if @upcoming_camps.nil? || @upcoming_camps.empty? %>
+				<p>You have no camps at this time</p>
+			<% else %>
+				<%= render :partial => 'partials/upcoming_camps' %>
+			<% end %>
+		</td>
+		<td width="50">&nbsp;</td>
+	</tr>
+</table>

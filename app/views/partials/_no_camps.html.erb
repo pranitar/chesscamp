@@ -1,0 +1,19 @@
+<table class="table">
+  <tr>
+    <th width="200">Name</th>
+    <th></th>
+  </tr>
+
+<% for instructor in @active_instructors %>
+  <tr>
+    <% if instructor.camps.size == 0 %>
+      <td><%= link_to instructor.name, instructor_path(instructor) %></td>
+      <td><%= link_to 'Edit', edit_instructor_path(instructor), class: "button tiny radius" %></td>
+    <%end%>
+  </tr>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @active_instructors, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

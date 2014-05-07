@@ -3,28 +3,23 @@
   <%= @location.name %><br /><br />
 
 <strong>Street:&nbsp;&nbsp;</strong><br /> 
-  <%= @location.street_1 %><br /><br />
+  <%= @location.street_1 %>
 
 <% if @location.street_2 %>
-  <%= @location.street_2 %><br /><br />
-<%end%>
+  <%= @location.street_2 %>
+<%end%><br /><br />
 
 <strong>City, State, Zip:&nbsp;&nbsp;</strong><br /> 
   <%= @location.city %>, <%= @location.state %> <%= @location.zip %><br /><br />
-
-<strong>Map:&nbsp;&nbsp;</strong><br /> 
-
-<!-- <strong>State:&nbsp;&nbsp;</strong><br /> 
-  <%= @location.state %><br /><br />
-
-<strong>Zip:&nbsp;&nbsp;</strong><br /> 
-  <%= @location.zip %><br /><br /> -->
 
 <strong>Maximum Capacity:&nbsp;&nbsp;</strong><br /> 
   <%= @location.max_capacity %><br /><br />
 
 <strong>Active?&nbsp;&nbsp;</strong>
   <%= @location.active ? "Yes" : "No" %><br /><br />
+
+<strong>Map:&nbsp;&nbsp;</strong><br /> 
+<%= image_tag @location.create_map_link %><br /><br />
 
 <%= link_to "Edit this location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
 <%= link_to 'Destroy location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %>

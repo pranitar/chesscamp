@@ -1,4 +1,8 @@
 <h3>Instructor Details</h3><br />
+<% unless @instructor.picture_url.nil? %>
+  <p><%= image_tag @instructor.picture_url %></p>
+<% end %>
+
 <strong>Name:&nbsp;&nbsp;</strong> 
   <%= @instructor.proper_name %><br /><br />
 
@@ -13,3 +17,4 @@
 
 <strong>Biography</strong><br />
   <%= @instructor.bio.nil? ? "N/A" : @instructor.bio %><br /><br />
+

@@ -1,0 +1,16 @@
+<h3>Registration Details</h3><br />
+<strong>Camp:&nbsp;&nbsp;</strong> 
+  <%= @registration.camp.name %><br /><br />
+
+<strong>Student:&nbsp;&nbsp;</strong>
+  <%= @registration.student.proper_name %><br /><br />
+
+<strong>Payment Status:&nbsp;&nbsp;</strong> 
+  <%= @registration.payment_status %><br /><br />
+
+<% unless @registration.points_earned.nil? %>
+<strong>Points Earned:&nbsp;&nbsp;</strong> 
+  <%= @registration.points_earned %><br /><br />
+<%end%>
+
+<%= link_to "Edit this registration", edit_registration_path(@registration), class: "button tiny radius" %>&nbsp;&nbsp;

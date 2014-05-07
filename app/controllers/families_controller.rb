@@ -3,6 +3,7 @@ class FamiliesController < ApplicationController
   # before_action :check_login, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   def index
+    authorize! :read, @family
     @active_families = Family.active.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_families = Family.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
@@ -16,10 +17,14 @@ class FamiliesController < ApplicationController
   def new
     authorize! :new, @family
     @family = Family.new
+    @family.students.build
   end
 
   def edit
     authorize! :update, @family
+    if(@family.students.nil?)
+      @family.students.build
+    end
   end
 
   def create
@@ -53,6 +58,6 @@ class FamiliesController < ApplicationController
     end
 
     def family_params
-      params.require(:family).permit(:family_name, :parent_first_name, :email, :phone, :active)
+      params.require(:family).permit(:family_name, :parent_first_name, :email, :phone, :active, student_attributes: [:first_name, :last_name, :date_of_birth, :rating, :active])
     end
 end

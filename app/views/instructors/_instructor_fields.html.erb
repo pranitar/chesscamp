@@ -3,5 +3,7 @@
  <%= f.input :phone, as: :string %>
  <%= f.input :email %>
  <%= f.input :bio, input_html: { rows: 6 } %>
+ <%= f.file_field :picture %>
  <%= f.input :active %>
+
  <%#= f.input :camp_id, collection: Camp.active.alphabetical, prompt: "Select camp..." %>

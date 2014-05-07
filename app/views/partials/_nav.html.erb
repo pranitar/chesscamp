@@ -1,4 +1,3 @@
-  <div class="contain-to-grid">
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
@@ -27,7 +26,6 @@
 
           <!-- options for instructors -->
           <li class="has-dropdown">
-            <!-- <a href="#">Instructors</a> -->
             <%= link_to "Instructors", instructors_path %>
             <ul class="dropdown">
               <li><%= link_to "List Instructors", instructors_path %></li>
@@ -35,9 +33,17 @@
             </ul>
           </li>
 
+          <!-- options for locations -->
+          <li class="has-dropdown">
+            <%= link_to "Locations", locations_path %>
+            <ul class="dropdown">
+              <li><%= link_to "List Locations", locations_path %></li>
+              <li><%= link_to "Add a Location", new_location_path %></li>
+            </ul>
+          </li>
+
           <!-- options for students -->
           <li class="has-dropdown">
-            <!-- <a href="#">Instructors</a> -->
             <%= link_to "Students", students_path %>
             <ul class="dropdown">
               <li><%= link_to "List Students", students_path %></li>
@@ -47,7 +53,6 @@
 
           <!-- options for families -->
           <li class="has-dropdown">
-            <!-- <a href="#">Instructors</a> -->
             <%= link_to "Families", families_path %>
             <ul class="dropdown">
               <li><%= link_to "List Families", families_path %></li>
@@ -55,16 +60,27 @@
             </ul>
           </li>
 
-          <!-- options for locations -->
+          <!-- options for registrations -->
           <li class="has-dropdown">
-            <!-- <a href="#">Instructors</a> -->
-            <%= link_to "Locations", locations_path %>
+            <%= link_to "Register Students", new_registration_path %>
+          </li>
+
+          <li class="has-dropdown">
+            <% if logged_in? %>
+              <%= link_to "Welcome, #{current_user.username}!", instructor_path(current_user.instructor) %>
+            <% else %>
+              <%= link_to "Welcome, Guest!", signup_path %>
+            <% end %>
             <ul class="dropdown">
-              <li><%= link_to "List Locations", locations_path %></li>
-              <li><%= link_to "Add a Location", new_location_path %></li>
+              <% if logged_in? %>
+                <li><%= link_to 'Logout', logout_path %></li>
+              <% else %>
+                <li><%= link_to 'Login', login_path %></li>
+                <li><%= link_to 'Sign Up', signup_path %></li>
+              <% end %>
             </ul>
           </li>
+
         </ul>
       </section>
     </nav>
-  </div>
