@@ -3,7 +3,13 @@
   <%= @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %><br /><br />
 
 <strong>Registrations (<%= @camp.registrations.size%>)</strong>&nbsp;&nbsp;<br>
+<table class="table">
+  <tr>
+    <th width="260">Name</th>
+    <th width="120">Rating</th>
+  </tr>
   <% @registrations.each do |registration| %>
     <%= link_to registration.student.name, student_path(registration.student) %> <%= registration.student.rating%><br>
   <% end %>
+</table>
 </div>

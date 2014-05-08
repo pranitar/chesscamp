@@ -14,6 +14,8 @@
 
   <div class="small-4 columns">
     <!-- SIDEBAR CONTENT GOES HERE -->
-    <%= render :partial => "inactive_camps" %>
+    <% unless @inactive_camps.nil? %>
+      <%= render :partial => "inactive_camps" %>
+    <%end%>
   </div>
 </div>

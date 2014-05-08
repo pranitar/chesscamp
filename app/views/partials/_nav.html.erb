@@ -4,14 +4,15 @@
           <%= link_to image_tag('chesslogo.png'), home_path %>
         </li>
       </ul>
+    <% if logged_in? && current_user.role == "admin" %>
       <section class="top-bar-section">
         <ul class="left">
           <!-- options for curriculums -->
           <li class="has-dropdown">
             <%= link_to "Curriculums", curriculums_path %>
             <ul class="dropdown">
-              <li><%= link_to "List Curriculums", curriculums_path %></li>
-              <li><%= link_to "Add a Curriculum", new_curriculum_path %></li>
+              <li id="font"><%= link_to "List Curriculums", curriculums_path %></li>
+              <li id="font"><%= link_to "Add a Curriculum", new_curriculum_path %></li>
             </ul>
           </li>
 
@@ -19,8 +20,8 @@
           <li class="has-dropdown">
             <%= link_to "Camps", camps_path %>
             <ul class="dropdown">
-              <li><%= link_to "List Camps", camps_path %></li>
-              <li><%= link_to "Add a Camp", new_camp_path %></li>
+              <li id="font"><%= link_to "List Camps", camps_path %></li>
+              <li id="font"><%= link_to "Add a Camp", new_camp_path %></li>
             </ul>
           </li>
 
@@ -28,8 +29,8 @@
           <li class="has-dropdown">
             <%= link_to "Instructors", instructors_path %>
             <ul class="dropdown">
-              <li><%= link_to "List Instructors", instructors_path %></li>
-              <li><%= link_to "Add an Instructor", new_instructor_path %></li>
+              <li id="font"><%= link_to "List Instructors", instructors_path %></li>
+              <li id="font"><%= link_to "Add an Instructor", new_instructor_path %></li>
             </ul>
           </li>
 
@@ -37,8 +38,8 @@
           <li class="has-dropdown">
             <%= link_to "Locations", locations_path %>
             <ul class="dropdown">
-              <li><%= link_to "List Locations", locations_path %></li>
-              <li><%= link_to "Add a Location", new_location_path %></li>
+              <li id="font"><%= link_to "List Locations", locations_path %></li>
+              <li id="font"><%= link_to "Add a Location", new_location_path %></li>
             </ul>
           </li>
 
@@ -46,8 +47,8 @@
           <li class="has-dropdown">
             <%= link_to "Students", students_path %>
             <ul class="dropdown">
-              <li><%= link_to "List Students", students_path %></li>
-              <li><%= link_to "Add a Student", new_student_path %></li>
+              <li id="font"><%= link_to "List Students", students_path %></li>
+              <li id="font"><%= link_to "Add a Student", new_student_path %></li>
             </ul>
           </li>
 
@@ -55,9 +56,41 @@
           <li class="has-dropdown">
             <%= link_to "Families", families_path %>
             <ul class="dropdown">
-              <li><%= link_to "List Families", families_path %></li>
-              <li><%= link_to "Add a Family", new_family_path %></li>
+              <li id="font"><%= link_to "List Families", families_path %></li>
+              <li id="font"><%= link_to "Add a Family", new_family_path %></li>
             </ul>
+          </li>
+
+          <!-- options for registrations -->
+          <li class="has-dropdown" id="font">
+            <%= link_to "Register Students", new_registration_path %>
+          </li>
+
+          <li class="has-dropdown" id="font">
+            <% if logged_in? %>
+              <%= link_to "Welcome, #{current_user.username}!", instructor_path(current_user.instructor) %>
+            <% else %>
+              <%= link_to "Welcome, Guest!", signup_path %>
+            <% end %>
+            <ul class="dropdown" id="font">
+              <% if logged_in? %>
+                <li><%= link_to 'Logout', logout_path %></li>
+                <li><%= link_to 'My Profile', instructor_path(current_user.instructor) %></li>
+              <% else %>
+                <li><%= link_to 'Login', login_path %></li>
+                <li><%= link_to 'Sign Up', signup_path %></li>
+              <% end %>
+            </ul>
+          </li>
+
+        </ul>
+      </section>
+    <% elsif logged_in? && current_user.role == "instructor" %>
+      <section class="top-bar-section">
+        <ul class="left">
+          <!-- options for instructors -->
+          <li class="has-dropdown">
+            <%= link_to "My Instructor Profile", instructor_path(current_user.instructor) %>
           </li>
 
           <!-- options for registrations -->
@@ -80,7 +113,51 @@
               <% end %>
             </ul>
           </li>
-
         </ul>
       </section>
-    </nav>
+    <% else %>
+      <section class="top-bar-section">
+        <ul class="left">
+          <!-- options for camps -->
+          <li class="has-dropdown">
+            <%= link_to "Camps", camps_path %>
+            <ul class="dropdown">
+              <li><%= link_to "List Camps", camps_path %></li>
+            </ul>
+          </li>
+
+          <!-- options for instructors -->
+          <li class="has-dropdown">
+            <%= link_to "Instructors", instructors_path %>
+            <ul class="dropdown">
+              <li><%= link_to "List Instructors", instructors_path %></li>
+            </ul>
+          </li>
+
+          <!-- options for locations -->
+          <li class="has-dropdown">
+            <%= link_to "Locations", locations_path %>
+            <ul class="dropdown">
+              <li><%= link_to "List Locations", locations_path %></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <% if logged_in? %>
+              <%= link_to "Welcome, #{current_user.username}!", instructor_path(current_user.instructor) %>
+            <% else %>
+              <%= link_to "Welcome, Guest!", signup_path %>
+            <% end %>
+            <ul class="dropdown">
+              <% if logged_in? %>
+                <li><%= link_to 'Logout', logout_path %></li>
+              <% else %>
+                <li><%= link_to 'Login', login_path %></li>
+                <li><%= link_to 'Sign Up', signup_path %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    <%end%>
+  </nav>

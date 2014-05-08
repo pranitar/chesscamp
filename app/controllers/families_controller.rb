@@ -49,7 +49,11 @@ class FamiliesController < ApplicationController
   def destroy
     authorize! :destroy, @family
     @family.destroy
-    redirect_to families_url, notice: "#{@family.family_name} family was removed from the system"
+    if @family.destroy
+      redirect_to families_url, notice: "#{@family.family_name} was removed from the system."
+    else
+      redirect_to families_url, notice: "Families cannot be deleted therefore, #{@family.family_name} was NOT removed from the system."
+    end
   end
 
   private

@@ -4,7 +4,6 @@ class InstructorsController < ApplicationController
   # before_action :check_login, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   def index
-    authorize! :read, @instructor
     @active_instructors = Instructor.active.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_instructors = Instructor.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
@@ -51,7 +50,14 @@ class InstructorsController < ApplicationController
   def destroy
     authorize! :destroy, @instructor
     @instructor.destroy
-    redirect_to instructors_url, notice: "#{@instructor.proper_name} was removed from the system"
+    if @instructor.destroy
+      redirect_to instructors_url, notice: "#{@instructor.proper_name} was removed from the system."
+    else
+      redirect_to instructors_url, notice: "Instructors cannot be deleted therefore, #{@instructor.proper_name} was NOT removed from the system."
+    end
+
+
+    
   end
 
   private

@@ -9,20 +9,14 @@
 				<div id="accordion">
 					<h3>Camps with no registrations</h3>
 					<div><%= render :partial => 'partials/no_registrations' %></div>
-				</div></br>
-			<%# end %>
-		<!-- </td> -->
-		<!-- <td width="50">&nbsp;</td>
-		<td>
-			<h3><span id="task_title">Incomplete Tasks</span>  &nbsp;&nbsp;<span class="add_link"><%#= link_to "[add new task]", new_task_path %></span></h3>
-			<%# if @incomplete_tasks.empty? %>
-				<p>You have no incomplete tasks at this time.</p>
-			<%# else %>-->
-				<div id="accordion">
 					<h3>Instructors with no camps</h3>
 					<div><%= render :partial => 'partials/no_camps'%></div>
+					<h3>Students not fully paid</h3>
+					<div><%= render :partial => 'partials/no_full_payment'%></div>
 				</div>
 			<% end %>
-		</td> 
+		</td>
+		<td width="50">&nbsp;</td>
+		<td><%= link_to "Generate Camp Payment Report", payments_path %></h3></td> 
 	</tr>
 </table>

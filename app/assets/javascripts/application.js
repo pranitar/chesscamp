@@ -20,22 +20,17 @@
 
 $(function(){ $(document).foundation(); });
 
-// Flash fade
-$(function() {
-   $('.alert-box').fadeIn('normal', function() {
-      $(this).delay(3700).fadeOut();
-   });
-});
+$(function() {$("#accordion").accordion();});
 
-$(function() {
-    $( "#accordion" ).accordion();
-  });
+$(function() {$( "#tabs" ).tabs();});
+
+$(".datepicker").datepicker();
 
 // Datepicker code
-$(document).ready(function() {
-	$(function() {
-	  $(".datepicker").datepicker({
-	    format: 'mm/dd/YYYY'
-	  });
-	});
-});
+// $(document).ready(function() {
+// 	$(function() {
+// 	  $(".datepicker").datepicker({
+// 	    format: 'mm/dd/YYYY'
+// 	  });
+// 	});
+// });

@@ -36,7 +36,9 @@ class Ability
         camp_students.include? this_student.id  
         end
     else
-        can :read, Camp 
+        can :read, Camp
+        can :read, Instructor
+        can :read, Location 
     end
   end
     # 

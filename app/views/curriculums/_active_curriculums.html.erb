@@ -14,7 +14,7 @@
     <td><%= link_to curriculum.name, curriculum_path(curriculum) %></td>
     <td align="center"><%= curriculum.min_rating.zero? ? "Unrated" : curriculum.min_rating %> - <%= curriculum.max_rating %></td>
     <td align="center"><%= curriculum.camps.size %></td>
-    <td><%= link_to 'Edit', edit_curriculum_path(curriculum), class: "button tiny radius" %></td>
+    <td><%= link_to(image_tag('edit.jpg'), edit_curriculum_path(curriculum)) %></td>
   </tr>
 <% end %>
 </table>

@@ -17,7 +17,24 @@
  	font-family: Minion Pro;
  }
 
+ #font{
+ 	font-family: Minion Pro;
+ }
+
  #background{
  	background-repeat:no-repeat;
 	background-size:cover;
+ }
+
+ #picture{
+ 	width: 75px;
+ 	height: 75px;
+ }
+
+ .img{
+ 	float:left;
+ }
+
+ .right{
+ 	float:right;
  }

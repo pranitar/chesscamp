@@ -23,6 +23,7 @@ class RegistrationsController < ApplicationController
     if @registration.save
       redirect_to @registration, notice: "This registration was added to the system."
     else
+      flash[:warning] = "Cannot register - student has either already been enrolled or is not eligible"
       render action: 'new'
     end
   end

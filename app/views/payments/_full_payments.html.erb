@@ -1,0 +1,22 @@
+<h3>Payments for Camps</h3>
+
+<table class="table">
+  <tr>
+    <th>Camp Name</th>
+    <th>Student Name</th>
+  </tr>
+<% for camp in @active_camps %>
+  <% for registration in camp.registrations %>
+    <% if registration.payment_status == "full" %>
+        <tr>
+          <td><%= link_to registration.student.proper_name, student_path(registration.student) %></td>
+          <td><%= link_to camp.name, camp_path(camp) %></td>
+      </tr>
+    <%end%>
+  <%end%>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @active_camps, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

@@ -44,7 +44,11 @@ class CampsController < ApplicationController
   def destroy
     authorize! :destroy, @camp
     @camp.destroy
-    redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was removed from the system."
+    if @camp.destroy
+      redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was removed from the system."
+    else
+      redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was not removed from the system."
+    end
   end
 
   private

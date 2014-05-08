@@ -15,7 +15,7 @@
     <td><%= family.parent_first_name %></td>
     <td align="center"><%= number_to_phone family.phone %></td>
     <td align="center"><%= family.email %></td>
-    <td><%= link_to 'Edit', edit_family_path(family), class: "button tiny radius" %></td>
+    <td><%= link_to(image_tag('edit.jpg'), edit_family_path(family)) %></td>
   </tr>
 <% end %>
 </table>

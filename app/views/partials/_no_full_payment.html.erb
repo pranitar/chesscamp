@@ -1,16 +1,18 @@
 <table class="table">
   <tr>
     <th width="200">Name</th>
+    <th width="200">Camp</th>
     <th></th>
   </tr>
 
 <% for student in @students %>
-  <tr>
-  	<% if student.registrations.size == 0 %>
-      <td><%= link_to student.name, student_path(student) %></td>
-      <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
-    <%end%>
-  </tr>
+  <% for registration in student.registrations.deposit_only %>
+    <tr>
+        <td><%= link_to student.name, student_path(student) %></td>
+        <td><%= link_to registration.camp.name, camp_path(registration.camp) %></td>
+        <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
+    </tr>
+  <%end%>
 <% end %>
 </table>
 <!-- Add the pagination using will_paginate gem -->

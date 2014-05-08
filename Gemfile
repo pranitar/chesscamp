@@ -23,6 +23,8 @@ gem 'jquery-rails'
 gem "nested_form"
 gem 'jquery-ui-rails', '4.1.1'
 gem 'time_date_helpers', '0.0.2'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
 
 # Turbolinks isn't playing nicely with foundation so for now remove it from standard rails
 # gem 'turbolinks'

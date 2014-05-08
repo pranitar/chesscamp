@@ -1,0 +1,13 @@
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Full Payments</a></li>
+    <li><a href="#tabs-2">Deposit-only Payments</a></li>
+  </ul>
+  <div id="tabs-1">
+    <%= render :partial => "full_payments" %>
+  </div>
+
+  <div id="tabs-2">
+    <%= render partial: 'deposit_payments' %>
+  </div>
+</div>
