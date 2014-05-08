@@ -1,22 +1,31 @@
-<h3>Welcome back, <%= current_user.username %>!</h3>
+<h3>Welcome back, <%= current_user.instructor.proper_name %>!</h3>
 
-<table border="0" cellspacing="5" cellpadding="5">
-	<tr valign="top">
-		<td>
-			<% if @upcoming_camps.nil? || @upcoming_camps.empty? %>
-				<p>You have no camps at this time</p>
-			<% else %>
-				<div id="accordion">
-					<h3>Camps with no registrations</h3>
-					<div><%= render :partial => 'partials/no_registrations' %></div>
-					<h3>Instructors with no camps</h3>
-					<div><%= render :partial => 'partials/no_camps'%></div>
-					<h3>Students not fully paid</h3>
-					<div><%= render :partial => 'partials/no_full_payment'%></div>
-				</div>
-			<% end %>
-		</td>
-		<td width="50">&nbsp;</td>
-		<td><%= link_to "Generate Camp Payment Report", payments_path %></h3></td> 
-	</tr>
-</table>
+<div class="row">
+  <div class="small-7 columns">
+	<% if @upcoming_camps.nil? || @upcoming_camps.empty? %>
+		<p>You have no camps at this time</p>
+	<% else %>
+	<div id="accordion">
+		<h3>Camps with No Registrations</h3>
+		<div><%= render :partial => 'partials/no_registrations' %></div>
+		<h3>Instructors with No Assigned Camps</h3>
+		<div><%= render :partial => 'partials/no_camps'%></div>
+		<h3>Students - Only Deposits Paid</h3>
+		<div><%= render :partial => 'partials/no_full_payment'%></div>
+	</div>
+	<% end %>
+  </div>
+  <div class="small-4 columns">
+		<h3>Quick Links</h3> 
+		<table class="side-nav">
+			<tr>
+				<td><span class="ui-icon ui-icon-document"></span></td>
+				<td><h6><%= link_to "Camp Payment Reports", payments_path %></h6></td>
+			</tr>
+			<tr>
+				<td><span class="ui-icon ui-icon-person"></span></td>
+				<td><%= link_to "My Profile", instructor_path(current_user.instructor) %></td>
+			</tr>
+		</table>
+   <div>
+</div>

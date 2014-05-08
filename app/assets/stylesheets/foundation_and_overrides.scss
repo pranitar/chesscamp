@@ -762,7 +762,7 @@ $button-margin-bottom: rem-calc(0);
 // $include-html-panel-classes: $include-html-classes;
 
 // We use these to control the background and border styles
-$panel-bg: scale-color(Silver, $lightness: 50%);
+$panel-bg: scale-color(Silver, $lightness: 75%);
 // $panel-border-style: solid;
 // $panel-border-size: 1px;
 
@@ -1029,7 +1029,7 @@ $panel-bg: scale-color(Silver, $lightness: 50%);
 
 // These control the background color for the table and even rows
 // $table-bg: #fff;
-$table-even-row-bg: Gainsboro;
+// $table-even-row-bg: Gainsboro;
 
 // These control the table cell border style
 $table-border-style: none;

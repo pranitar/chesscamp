@@ -1,4 +1,4 @@
-<h3>Welcome back, <%= current_user.username %>!</h3>
+<h3>Welcome back, <%= current_user.instructor.proper_name %>!</h3>
 
 <table border="0" cellspacing="5" cellpadding="5">
 	<tr valign="top">
@@ -9,6 +9,28 @@
 			<% else %>
 				<%= render :partial => 'partials/upcoming_camps' %>
 			<% end %>
+		</td>
+		<td width="50">&nbsp;</td>
+
+		<td>
+			<h3>Quick Links &nbsp;&nbsp;</h3>
+			<table class="side-nav">
+				<tr>
+					<td><span class="ui-icon ui-icon-person"></span></td>
+					<td><%= link_to "My Profile", instructor_path(current_user.instructor) %></td>
+				</tr>
+			</table><br>
+			<h3>Chess Instructional Material &nbsp;&nbsp;</h3>
+			<table class="side-nav">
+				<tr>
+					<td><span class="ui-icon ui-icon-bookmark"></span></td>
+					<td><%= link_to "Rockford Chess Org", "http://www.rockfordchess.org/instruction/" %></td>
+				</tr>
+				<tr>
+					<td><span class="ui-icon ui-icon-bookmark"></span></td>
+					<td><%= link_to "PB Chess", "http://pbchess.vlasovsoft.net/en/contents.html" %></td>
+				</tr>
+			</table>
 		</td>
 		<td width="50">&nbsp;</td>
 	</tr>

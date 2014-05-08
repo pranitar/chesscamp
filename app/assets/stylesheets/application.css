@@ -31,6 +31,10 @@
  	height: 75px;
  }
 
+ .right{
+ 	float:right;
+ }
+
  .img{
  	float:left;
  }
