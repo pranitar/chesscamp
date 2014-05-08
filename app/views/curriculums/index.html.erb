@@ -1,5 +1,10 @@
 <div class="row">
-  <div class="small-7 columns">
+  <div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Active Curriculums</a></li>
+    <li><a href="#tabs-2">Inactive Curriculums</a></li>
+  </ul>
+  <div class="small-7 columns" id = "tabs-1">
     <!-- MAIN CONTENT GOES HERE -->
     <%= render :partial => "active_curriculums" %>
     <br />
@@ -10,8 +15,9 @@
     &nbsp;
   </div>
 
-  <div class="small-4 columns">
+  <div class="small-4 columns" id = "tabs-2">
     <!-- SIDEBAR CONTENT GOES HERE -->
     <%= render partial: 'inactive_curriculums' %>
   </div>
+</div>
 </div>

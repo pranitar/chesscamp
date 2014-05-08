@@ -1,9 +1,14 @@
 <div class="row">
-  <div class="small-7 columns">
+  <div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Active Camps</a></li>
+    <li><a href="#tabs-2">Inactive Camps</a></li>
+  </ul>
+  <div class="small-7 columns" id="tabs-1">
     <!-- MAIN CONTENT GOES HERE -->
     <%= render :partial => "camps", locals: { status: "Upcoming", camps: @upcoming_camps } %>
     <p>&nbsp;</p>
-    <%= render :partial => "camps", locals: { status: "Past", camps: @past_camps } %>
+    <%= render :partial => "camps", locals: { status: "Past", camps: @past_camps } if !@past_camps.nil? %>
     <br />
     <%= link_to "Add a new camp", new_camp_path, class: "button tiny radius" %>
   </div>
@@ -12,10 +17,11 @@
     &nbsp;
   </div>
 
-  <div class="small-4 columns">
+  <div class="small-4 columns" id="tabs-2">
     <!-- SIDEBAR CONTENT GOES HERE -->
     <% unless @inactive_camps.nil? %>
       <%= render :partial => "inactive_camps" %>
     <%end%>
   </div>
+</div>
 </div>
